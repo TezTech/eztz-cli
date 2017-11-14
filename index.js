@@ -42,7 +42,7 @@ validCommands = [
 (async() => {
     // Validate Commands
     if (process.argv.length <= 2){
-        return outputError("Please enter a command!");
+        return outputError("Please enter a command! (eztz help)");
     }
     var command = process.argv[2], args = process.argv.slice(3);
     if (validCommands.indexOf(command) < 0 ) {
