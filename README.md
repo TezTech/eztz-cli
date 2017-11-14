@@ -14,17 +14,17 @@ npm i -g eztz-cli
 ```
 
 ## Getting Started ##
-* First we need to setup or identity:
+1) First we need to setup or identity:
 ```
 eztz newIdentity main
 eztz balance main
 ```
-* No tez? No worries, time to create a free account (on the alphanet, free accounts start with 100k tez!)
+2) No tez? No worries, time to create a free account (on the alphanet, free accounts start with 100k tez!)
 ```
 eztz freeAccount main account1
 eztz balance account1
 ```
-* That's better, time to do a transfer!
+3) That's better, time to do a transfer!
 ```
 eztz transfer 50000 account1 main
 eztz balance account1
