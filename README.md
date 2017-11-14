@@ -34,10 +34,80 @@ eztz balance main
 Well done, you've created an identity, checked your balance several times, created a free account and made a transfer! All on the Tezos blockchain!
 
 ## Documentation
-Coming soon (not very helpful, I know!)
+#### eztz man / eztz help
+Currently not implemented - sorry! (not very helpful...)
+
+#### eztz clearData
+Clears the ~/.eztz.config.json file, removing all identities, contracts etc.
+Note: This will delete all private keys
+
+#### eztz newIdentity $label
+Generates a new crypto identity, stored with the label $label.
+
+#### eztz newAccount $id $label $amount
+Generates a account (codeless contract) for $id, stored with the label $label and sent $amount from $id as a starting balance.
+Note: Need to implement $spendable, $delegatable, $delegate and $fee variables
+
+#### eztz freeAccount $id $label
+Generates a new faucet/free account for $id, stored with the label $label.
+
+#### eztz newContract $id $label $amount $code $initial
+Originates a new contract for $id, stored with the label $label and sent $amount as a starting balance, $code as the code for the smart contract, with the storage being set to $initial.
+Note: Need to implement $spendable, $delegatable, $delegate and $fee variables
+
+#### eztz listIdentities
+List all known identities (generated keys)
+
+#### eztz listAccounts
+List all know accounts (originated contracts without code, e.g. faucet/free accounts)
+
+#### eztz listContracts
+Lists all known contracts (originated contracts with code)
+
+#### eztz balance $for
+Returns the balance for $for (can be a label or a key of a contract, account or identity, or any valid key)
+
+#### eztz setDelegate $for $delegate
+Sets the delegate for $for (can be a label or a key of a contract or account) to the specified $delehate (can be label or any valid tz1 key)
+
+#### eztz transfer $amount $from $to
+Tramsfers $amount from $from (can be label or key of a contract, account or identitiy) to $to (can be a label, or any valid key)
+Note: $fee and $parameter aren't implemented yet
+
+#### eztz typecheckCode $code
+Typechecks code
+Note: Code doesn't handle sugars yet (DIIP etc).
+
+#### eztz typecheckData $data $type
+Typechecks $data against the specified $type
+
+#### eztz runCode $code $amount $input $storage
+Simulates running $code with initial $storage, with a transaction of $amount and $input.
+Note: $trace variable is ignored (alway true). Code doesn't handle sugars yet (DIIP etc).
+
+#### eztz contract $contract
+Returns the contract/account JSON object for $contract
+Note: object data could do with some tidying up
+
+#### eztz storage $contract
+Returns the storage for $contract - data is returned as a formatted array (more details to come).
+Note: Needs work on display format
+
+#### eztz head
+Returns the current head JSON object
+Note: object data could do with some tidying up
+
+#### eztz rpc $endPoint
+Calls the RPC api at the $endPoint specified, using the $data (if any)
+Note: $data hasn't been implemented yet
+
+#### eztz provider $provider
+Changes the node provider - by default we use https://tezrpc.me/api. You could set this to something like localhost:8732
+
 
 ## Future Development
 Our current goals are:
+* Implement optional arguments
 * Work on documentation
 * Change commands to match tezos client (i.e. get balance for X and transfer 50000 to A from V)
 * Further debugging
