@@ -39,21 +39,24 @@ Currently not implemented - sorry! (not very helpful...)
 
 #### eztz clearData
 Clears the ~/.eztz.config.json file, removing all identities, contracts etc.
-Note: This will delete all private keys
+
+_Note: This will delete all private keys_
 
 #### eztz newIdentity $label
 Generates a new crypto identity, stored with the label $label.
 
 #### eztz newAccount $id $label $amount
 Generates a account (codeless contract) for $id, stored with the label $label and sent $amount from $id as a starting balance.
-Note: Need to implement $spendable, $delegatable, $delegate and $fee variables
+
+_Note: Need to implement $spendable, $delegatable, $delegate and $fee variables_
 
 #### eztz freeAccount $id $label
 Generates a new faucet/free account for $id, stored with the label $label.
 
 #### eztz newContract $id $label $amount $code $initial
 Originates a new contract for $id, stored with the label $label and sent $amount as a starting balance, $code as the code for the smart contract, with the storage being set to $initial.
-Note: Need to implement $spendable, $delegatable, $delegate and $fee variables
+
+_Note: Need to implement $spendable, $delegatable, $delegate and $fee variables_
 
 #### eztz listIdentities
 List all known identities (generated keys)
@@ -72,34 +75,41 @@ Sets the delegate for $for (can be a label or a key of a contract or account) to
 
 #### eztz transfer $amount $from $to
 Tramsfers $amount from $from (can be label or key of a contract, account or identitiy) to $to (can be a label, or any valid key)
-Note: $fee and $parameter aren't implemented yet
+
+_Note: $fee and $parameter aren't implemented yet_
 
 #### eztz typecheckCode $code
 Typechecks code
-Note: Code doesn't handle sugars yet (DIIP etc).
+
+_Note: Code doesn't handle sugars yet (DIIP etc)._
 
 #### eztz typecheckData $data $type
 Typechecks $data against the specified $type
 
 #### eztz runCode $code $amount $input $storage
 Simulates running $code with initial $storage, with a transaction of $amount and $input.
-Note: $trace variable is ignored (alway true). Code doesn't handle sugars yet (DIIP etc).
+
+_Note: $trace variable is ignored (alway true). Code doesn't handle sugars yet (DIIP etc)._
 
 #### eztz contract $contract
 Returns the contract/account JSON object for $contract
-Note: object data could do with some tidying up
+
+_Note: object data could do with some tidying up_
 
 #### eztz storage $contract
 Returns the storage for $contract - data is returned as a formatted array (more details to come).
-Note: Needs work on display format
+
+_Note: Needs work on display format_
 
 #### eztz head
 Returns the current head JSON object
-Note: object data could do with some tidying up
+
+_Note: object data could do with some tidying up_
 
 #### eztz rpc $endPoint
 Calls the RPC api at the $endPoint specified, using the $data (if any)
-Note: $data hasn't been implemented yet
+
+_Note: $data hasn't been implemented yet_
 
 #### eztz provider $provider
 Changes the node provider - by default we use https://tezrpc.me/api. You could set this to something like localhost:8732
@@ -116,6 +126,8 @@ Our current goals are:
 * Add better CLI GUI (colours, error messages, tables etc)
 * Develop CLI help and man guides
 * Expand functionality to fully match tezos-client (currently we got about 85% of functionality)
+* Develop baker/endorser daemon services
+* Build multi-platform GUI (light-client)
 
 ## Contribute
 Please feel free to contribute - I will merge any pull requests as soon as I've gone through the changes.
