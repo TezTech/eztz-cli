@@ -58,7 +58,7 @@ homeDir = require('os').homedir();
     
     // Load config
     var jsonfile = require('jsonfile');
-    var confFile = homeDir+'/config.json';
+    var confFile = homeDir+'/.eztz.config.json';
     var config = {};
     jsonfile.readFile(confFile, function(err, obj) {
       if (err){
