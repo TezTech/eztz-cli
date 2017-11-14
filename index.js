@@ -37,7 +37,8 @@ validCommands = [
   'head',
   'rpc',
   'provider',
-];
+],
+homeDir = require('os').homedir();
 
 (async() => {
     // Validate Commands
@@ -57,7 +58,7 @@ validCommands = [
     
     // Load config
     var jsonfile = require('jsonfile');
-    var confFile = './config.json';
+    var confFile = homeDir + '/config.json';
     var config = {};
     jsonfile.readFile(confFile, function(err, obj) {
       if (err){
