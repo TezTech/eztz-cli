@@ -58,12 +58,12 @@ homeDir = require('os').homedir();
     
     // Load config
     var jsonfile = require('jsonfile');
-    var confFile = homeDir + '/config.json';
+    var confFile = homeDir+'/config.json';
     var config = {};
     jsonfile.readFile(confFile, function(err, obj) {
       if (err){
         outputInfo('No config file found, making new one...');
-        jsonfile.writeFile(defaultConfig, config);
+        jsonfile.writeFile(confFile, defaultConfig);
       } else {
         config = obj;
       }
