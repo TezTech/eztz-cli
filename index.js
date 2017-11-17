@@ -37,6 +37,7 @@ validCommands = [
   'head',
   'rpc',
   'provider',
+  'vanity',
 ],
 homeDir = require('os').homedir();
 
@@ -72,6 +73,38 @@ homeDir = require('os').homedir();
       
       // Process Commands
       switch(command){
+        case "vanity":
+          if (args.length < 1) return outputError("Incorrect usage - eztz vanity match [match....]");
+          var ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz', match;
+          for(var i = 0; i < args.length; i++){
+            match = args[i];
+            for(var i = 0; i < match.length; i++){
+                if (ALPHABET.indexOf(match[i]) < 0){
+                    return outputError("One of your search terms is not valid - please ensure search term only includes b58 valid characters: " + ALPHABET);
+                }
+            }
+          }
+          outputInfo('Ctrl+C to stop - this will continue searching until you manually halt the process...');
+          var cc = 0;
+          var keys, fmatch;
+          function tick() {
+              keys = eztz.crypto.generateKeysNoSeed();
+              for(var i = 0; i < args.length; i++){
+                fmatch = "tz1"+args[i];
+                if (keys.pkh.substr(0, fmatch.length) == fmatch){
+                    console.log("\nFound match:");
+                    console.log(keys);
+                    console.log("\n");
+                } 
+              } 
+              process.stdout.clearLine();
+              process.stdout.cursorTo(0);
+              process.stdout.write("Checked " + cc++ + " hashes");
+              setImmediate(tick);
+          }
+          tick();
+    
+        break;
         case "man":
         case "help":
           return outputInfo('Manual coming soon');
